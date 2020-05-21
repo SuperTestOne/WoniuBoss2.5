@@ -139,3 +139,37 @@ class Service:
         Select(ele).select_by_visible_text(value)
 
 #***************殷*****************#
+
+# ================================================================================================
+    # 詹正
+    #获取软件网址,需要传入元素对象和网址配置文件路径
+    @classmethod
+    def open_page_zz(cls,driver):
+        contents = Util.get_json("..\\..\\conf\\base.conf")[1]
+        url = f"{contents['PROTOCOL']}://{contents['IP']}:{contents['PORT']}/{contents['PROGRAM']}"
+        driver.get(url)
+
+    # 获取driver
+    @classmethod
+    def get_driver_zz(cls):
+        from selenium import webdriver
+        contents = Util.get_json("..\\..\\conf\\base.conf")[1]
+        driver = getattr(webdriver, contents['BROWSER'])()
+        driver.implicitly_wait(5)
+        return driver
+
+    #登录并打开模块
+    @classmethod
+    def open_module_connect_zz(cls,driver,info):
+        from WoniuBoss_GUI_Test.lib.Login.Login_Action import L_Action
+        #登录
+        L_Action(driver).new_do_login(info[0],info[1])
+        L_Action(driver).click_decode()
+        L_Action(driver).input_secondary_password(info[2])
+        L_Action(driver).click_confirm_decode()
+        #点击大模块
+        driver.find_element_by_xpath(info[3]).click()
+        #点击子模块
+        driver.find_element_by_xpath(info[4]).click()
+
+# ================================================================================================
