@@ -55,6 +55,7 @@ class Service:
     #获取页面信息
     @classmethod
     def get_hint(cls,driver,xpath):
+        global msg
         try:
             WebDriverWait(driver, 10, 0.5).until(lambda driver: driver.find_element_by_xpath("/html/body").text)
             msg = driver.find_element_by_xpath(xpath).text
@@ -108,3 +109,33 @@ class Service:
     def select_motion(cls,driver,how,what,value):
         sm = driver.find_element(by=how, value=what)
         Select(sm).select_by_visible_text(value)
+#***************殷*****************#
+    # 从文本中读取内容
+    @classmethod
+    def get_txt(cls, path):
+        with open(path, encoding='utf8') as file:
+            contents = file.readlines()
+        return contents
+    #只做登录操作
+    @classmethod
+    def only_login(cls,driver):
+        username = driver.find_element_by_name("userName")
+        username.click()
+        username.send_keys('wncd000')
+        pword = driver.find_element_by_name("userPass")
+        pword.click()
+        pword.send_keys('woniu123')
+        driver.find_element_by_xpath('/html/body/div[1]/div/div/div[2]/button').click()
+
+    #点击进入某个模块
+    @classmethod
+    def into_module(cls,driver,moduleName):
+        driver.find_element_by_link_text(moduleName).click()
+
+    # 根据下拉框的值选择
+    @classmethod
+    def droplist(cls, ele, value):
+        from selenium.webdriver.support.ui import Select
+        Select(ele).select_by_visible_text(value)
+
+#***************殷*****************#
