@@ -157,9 +157,5 @@ class Market:
         self.driver.find_element_by_xpath("//div[@class='modal-footer']/button[@class='btn btn-primary btn-padding']").click()
         msg = self.driver.find_element_by_xpath("//div[@class='bootbox-body']").get_attribute("innerHTML")
         return msg
-if __name__ == '__main__':
-    driver = Service.get_driver()
-    mk =Market(driver)
-    info = {'path': 'D:\\woniuboss接口信息.xls','area':'成都','partment':'咨询部'}
-    mk.upload_resource(info)
+
 

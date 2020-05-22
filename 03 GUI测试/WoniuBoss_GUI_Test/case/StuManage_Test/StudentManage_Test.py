@@ -89,6 +89,7 @@ class Stu_Manage_Test(unittest.TestCase):
         else:
             actual = 'search-success'
         self.assertEqual(actual, expect)
+        
     # 阶段考评查询测试
     search_stagegrade_conf = Util.get_json('../../conf/StuManage_Conf/StuManage_Excel.conf')[8]
     search_stagegrade_data = Util.get_excel(search_stagegrade_conf)
@@ -118,8 +119,3 @@ class Stu_Manage_Test(unittest.TestCase):
         else:
             actual = 'add-success'
         self.assertEqual(actual, expect)
-
-
-
-if __name__ == '__main__':
-    unittest.main()

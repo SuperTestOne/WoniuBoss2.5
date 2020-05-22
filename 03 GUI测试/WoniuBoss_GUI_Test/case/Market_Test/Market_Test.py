@@ -17,7 +17,6 @@ class Market_Test(unittest.TestCase):
     #获取需要添加的数据
     add_conf = Util.get_json('../../conf/Market_Conf/Market_Excel.conf')[0]
     add_data = Util.get_excel(add_conf)
-    # print(add_data)
     @parameterized.expand(add_data)
     #新增资源测试
     def test_add_resource(self,phone,name,age,area,partment,education,eduexp,experience
@@ -35,7 +34,6 @@ class Market_Test(unittest.TestCase):
     # 获取需要查询的测试数据
     search_conf = Util.get_json('../../conf/Market_Conf/Market_Excel.conf')[1]
     search_data= Util.get_excel(search_conf)
-    # print(search_data)
     @parameterized.expand(search_data)
     def test_search_resource(self,value,expect):
         search_info = {'value':value,'expect':expect}
@@ -49,7 +47,6 @@ class Market_Test(unittest.TestCase):
     # 获取需要上传简历的测试数据
     upload_conf = Util.get_json('../../conf/Market_Conf/Market_Excel.conf')[2]
     upload_data= Util.get_excel(upload_conf)
-    # print(upload_data)
     @parameterized.expand(upload_data)
     def test_upload_resource(self, path, area,partment,expect):
         upload_info = {'path':path,'area':area,'partment':partment,'expect':expect}
@@ -60,6 +57,3 @@ class Market_Test(unittest.TestCase):
             actual = 'upload-fail'
 
         self.assertEqual(actual, expect)
-
-if __name__ == '__main__':
-    unittest.main()

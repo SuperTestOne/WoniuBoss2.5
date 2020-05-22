@@ -136,10 +136,3 @@ class Student_Manage:
         self.driver.find_element_by_xpath("//div[9]/div/div/div[3]/button").click()
 
 
-
-if __name__ == '__main__':
-    driver = Service.get_driver()
-    s = Student_Manage(driver)
-    info = {'classes':'WNCDC33','stage':'第二阶段','grade':80,'evaluate':'良好'}
-    s.add_stage_grade(info)
-

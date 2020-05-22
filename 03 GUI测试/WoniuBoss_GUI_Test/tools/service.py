@@ -110,12 +110,6 @@ class Service:
         sm = driver.find_element(by=how, value=what)
         Select(sm).select_by_visible_text(value)
 #***************殷*****************#
-    # 从文本中读取内容
-    @classmethod
-    def get_txt(cls, path):
-        with open(path, encoding='utf8') as file:
-            contents = file.readlines()
-        return contents
     #只做登录操作
     @classmethod
     def only_login(cls,driver):
