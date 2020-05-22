@@ -2,7 +2,6 @@
 import re
 from WoniuBoss_GUI_Test.tools.service import Service
 
-
 class Tech:
 
     def __init__(self, driver):
@@ -11,17 +10,17 @@ class Tech:
     # 选择区域下拉框中的内容
     def select_area(self, value):
         area = self.driver.find_element_by_id('region_id')
-        Service.select_value(area, value)
+        Service.droplist(area, value)
 
     # 选择面试下拉框中的内容
     def select_inter(self, value):
         inter = self.driver.find_element_by_id('studentSelect')
-        Service.select_value(inter,value)
+        Service.droplist(inter,value)
 
     # 选择班级下拉框中的内容
     def select_gra(self, value):
         gra = self.driver.find_element_by_id('semesterSelect')
-        Service.select_value(gra,value)
+        Service.droplist(gra,value)
 
     # 输入姓名
     def input_names(self, value):
@@ -36,7 +35,8 @@ class Tech:
     # 选择面试结果下拉框中的内容
     def select_result(self, value):
         res = self.driver.find_element_by_xpath('//*[@id="isPassSkill"]')
-        Service.select_value(res,value)
+        Service.droplist(res,value)
+
     # 输入评价内容
     def input_content(self,value):
         con = self.driver.find_element_by_xpath('//*[@id="sval"]')
@@ -56,12 +56,12 @@ class Tech:
 
     # 随机点击面试按钮
     def click_random_inter_button(self):
-        number = Service.random_delete(self.driver,"/html/body/div[8]/div[2]/div/div/div/div/div[2]/div[2]/div[4]/div[1]/span[1]")
+        number = Service.random_delete(self.driver,'//*[@id="skills"]/div[2]/div[2]/div[4]/div[1]/span[1]')
         self.driver.find_element_by_xpath(f'//*[@id="stuInfo_table"]/tbody/tr[{number}]/td[9]/button').click()
 
-    # 获取操作之后的提示信息
-    def get_msg(self):
-        return self.driver.find_element_by_xpath('/html/body/div[10]/div/div/div[2]/div').text
+    # # 获取操作之后的提示信息
+    # def get_msg(self):
+    #     return self.driver.find_element_by_xpath('/html/body/div[10]/div/div/div[2]/div').text
 
     # 完成搜索动作
     def do_search(self,sous_info):
@@ -73,10 +73,8 @@ class Tech:
         self.click_search_button()
 
     # 随机面试动作组合
-    def do_inter(self,inter_info):
+    def do_interview(self,inter_info):
         self.click_random_inter_button()
-        import time
-        time.sleep(10)
         self.select_result(inter_info[0])
         self.input_content(inter_info[1])
         self.click_save_button()

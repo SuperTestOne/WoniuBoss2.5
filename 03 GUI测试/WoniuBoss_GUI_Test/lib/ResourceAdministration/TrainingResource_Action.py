@@ -59,7 +59,8 @@ class TR_Action:
     def do_delete(self):
         num = Service.random_delete(self.driver,self.ele[0]["TR_student_list_xpath"])
         Service.click_motion(self.driver,"xpath",f"//*[@id='personal-table']/tbody/tr[{num}]/td[1]/input")
-        Service.click_motion(self.driver,'id', self.ele[2]["TR_abandon_id"])
+        Service.click_motion(self.driver,'xpath', self.ele[2]["TR_abandon_xpath"])
+        self.driver.execute_script('window.scrollBy(0,-100)')
         time.sleep(1)
         Service.click_motion(self.driver,'xpath', self.ele[2]["TR_confirm_abandon_xpath"])
 

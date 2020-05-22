@@ -18,7 +18,7 @@ class DR_Test(unittest.TestCase):
 
     def setUp(self):
         # 获取绕过登录的信息
-        login_ele = Util.get_json("..\\..\\conf\\ResourceAdministration_Conf\\RA_Login.conf")[2]
+        login_ele = Util.get_json("..\\..\\conf\\ResourceAdministration_Conf\\RA_Login.conf")[1]
         self.driver = Service.get_driver()
         Service.open_page(self.driver)
         Service.open_module_connect(self.driver, login_ele)
