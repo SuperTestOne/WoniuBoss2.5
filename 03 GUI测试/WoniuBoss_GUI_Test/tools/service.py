@@ -142,22 +142,6 @@ class Service:
 
 # ================================================================================================
     # 詹正
-    #获取软件网址,需要传入元素对象和网址配置文件路径
-    @classmethod
-    def open_page_zz(cls,driver):
-        contents = Util.get_json("..\\..\\conf\\base.conf")[1]
-        url = f"{contents['PROTOCOL']}://{contents['IP']}:{contents['PORT']}/{contents['PROGRAM']}"
-        driver.get(url)
-
-    # 获取driver
-    @classmethod
-    def get_driver_zz(cls):
-        from selenium import webdriver
-        contents = Util.get_json("..\\..\\conf\\base.conf")[1]
-        driver = getattr(webdriver, contents['BROWSER'])()
-        driver.implicitly_wait(5)
-        return driver
-
     #登录并打开模块
     @classmethod
     def open_module_connect_zz(cls,driver,info):

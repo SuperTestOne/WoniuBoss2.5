@@ -13,37 +13,32 @@ class SSI_Test(unittest.TestCase):
 
     # 查询info
     query_conf = Util.get_json(r'..\..\conf\ClassServiceManagement_Conf\SSI_Excel.conf')[0]
-    query_info = Util.get_excel_to_tuple(query_conf)
+    query_info = Util.get_excel(query_conf)
     # print(query_info)
 
 
     # 查询info
     two_query_conf = Util.get_json(r'..\..\conf\ClassServiceManagement_Conf\SSI_Excel.conf')[1]
-    two_query_info = Util.get_excel_to_tuple(two_query_conf)
+    two_query_info = Util.get_excel(two_query_conf)
     # print(two_query_info)
-
 
 
     # 考勤info
     Sgin_conf = Util.get_json(r'..\..\conf\ClassServiceManagement_Conf\SSI_Excel.conf')[2]
-    Sgin_info = Util.get_excel_to_tuple(Sgin_conf)
+    Sgin_info = Util.get_excel(Sgin_conf)
     # print(Sgin_info)
-
 
 
     # 返回info
     Return_conf = Util.get_json(r'..\..\conf\ClassServiceManagement_Conf\SSI_Excel.conf')[3]
-    Return_info = Util.get_excel_to_tuple(Return_conf)
+    Return_info = Util.get_excel(Return_conf)
     # print(Return_info)
-
 
 
     # 批量考勤info
     Bactch_ssi_conf = Util.get_json(r'..\..\conf\ClassServiceManagement_Conf\SSI_Excel.conf')[4]
-    Bactch_ssi_info = Util.get_excel_to_tuple(Bactch_ssi_conf)
-    # print(Bactch_ssi_info)
-
-
+    Bactch_ssi_info = Util.get_excel(Bactch_ssi_conf)
+    print(Bactch_ssi_info)
 
 # ================================================================================================
 
@@ -51,22 +46,18 @@ class SSI_Test(unittest.TestCase):
     def setUpClass(cls):
         pass
 
-
     # 收尾工作
     @classmethod
     def tearDownClass(cls):
-        cls.driver = Service.get_driver_zz()
+        cls.driver = Service.get_driver()
         cls.driver.close()
 
-
     def setUp(cls):
-        cls.driver = Service.get_driver_zz()
-        Service.open_page_zz(cls.driver)
+        cls.driver = Service.get_driver()
+        Service.open_page(cls.driver)
         info = ['WNCD051', 'Woniu123', 'Woniu123', '/html/body/div[4]/div[2]/div[8]/div[1]/a',
                 '//*[@id="list-31"]/div/ul/li[2]/a']
         Service.open_module_connect_zz(cls.driver, info)
-
-
 
     def tear(cls):
         pass
@@ -113,9 +104,6 @@ class SSI_Test(unittest.TestCase):
 
         # 断言测试是否通过
         cls.assertEqual(query_actual, ssiquerydata_two['expect'])
-
-
-
 # ================================================================================================
 
     # 考勤
@@ -129,7 +117,6 @@ class SSI_Test(unittest.TestCase):
         time.sleep(1)
         text_content = cls.driver.find_element_by_xpath \
             ('//*[@id="236"]/tbody/tr[3]/td[6]').text
-        print(text_content)
 
         # 断言
         if "正常" in text_content or "请假" in text_content:
@@ -139,8 +126,6 @@ class SSI_Test(unittest.TestCase):
 
         # 断言测试是否通过
         cls.assertEqual(SginIn_actual, ssistetedata['expect'])
-
-
 # ================================================================================================
 
     # 返回
@@ -149,36 +134,29 @@ class SSI_Test(unittest.TestCase):
 
         SSI_Action(cls.driver).click_SSI_class()
 
-        old_num = Service.get_hint \
-            (cls.driver, '//*[@id="panel-element-236"]/div/div[1]/div[2]/div[4]/div[1]/span[1]')
+        old_text = cls.driver.find_element_by_xpath\
+            ('//*[@id="panel-element-236"]/div/div[1]/div[2]/div[4]/div[1]/span[1]').text
 
         rnssidata = {'ssiname': ssiname, 'expect': expect}
         SSI_Action(cls.driver).do_Return(rnssidata)
 
         time.sleep(1)
-        new_num = Service.get_hint \
-            (cls.driver, '//*[@id="panel-element-236"]/div/div[1]/div[2]/div[4]/div[1]/span[1]')
-
-        old_add_number = re.findall(r'共(.*?)条', old_num)[0]
-        old_add_code = old_add_number.strip()
-        new_add_number = re.findall(r'共(.*?)条', new_num)[0]
-        new_add_code = new_add_number.strip()
+        new_text = cls.driver.find_element_by_xpath\
+            ('//*[@id="panel-element-236"]/div/div[1]/div[2]/div[4]/div[1]/span[1]').text
 
         # 断言
-        if int(new_add_code) == int(old_add_code):
+        if old_text == new_text:
             Return_actual = 'Return_pass'
         else:
             Return_actual = 'Return_fail'
 
         # 断言测试是否通过
         cls.assertEqual(Return_actual, rnssidata['expect'])
-
-
 # ================================================================================================
 
     # 批量考勤
     @parameterized.expand(Bactch_ssi_info)
-    def test_SSI_Bactch(cls, ssicontents_one, ssicontents_two, ssicontents_three,expect):
+    def test_SSI_Bactch(cls, ssicontents_one, ssicontents_two, ssicontents_three, expect):
 
         SSI_Action(cls.driver).click_SSI_class()
 
@@ -189,25 +167,22 @@ class SSI_Test(unittest.TestCase):
         time.sleep(1)
         text_content_one = cls.driver.find_element_by_xpath \
             ('//*[@id="236"]/tbody/tr[2]/td[6]').text
+        print(text_content_one)
 
         text_content_two = cls.driver.find_element_by_xpath \
             ('//*[@id="236"]/tbody/tr[4]/td[6]').text
+        print(text_content_two)
 
         text_content_three = cls.driver.find_element_by_xpath \
             ('//*[@id="236"]/tbody/tr[5]/td[6]').text
+        print(text_content_three)
 
         # 断言
         if ("正常" in text_content_one) and ("正常" in text_content_two) and ("正常" in text_content_three):
             Bactch_ssi_actual = 'Bactch_ssi_pass'
         else:
-            Bactch_ssi_actual = 'Sgin_fail'
+            Bactch_ssi_actual = 'Bactch_ssi_fail'
 
         # 断言测试是否通过
         cls.assertEqual(Bactch_ssi_actual, Bactchdata['expect'])
-
-
 # ================================================================================================
-
-
-if __name__ == '__main__':
-    unittest.main()
