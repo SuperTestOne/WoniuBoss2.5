@@ -13,24 +13,17 @@ class STC_Test(unittest.TestCase):
 
     # 查询info
     query_conf = Util.get_json(r'..\..\conf\\ClassServiceManagement_Conf\STC_Excel.conf')[0]
-    query_info = Util.get_excel_to_tuple(query_conf)
-    # print(query_info)
+    query_info = Util.get_excel(query_conf)
 
 
     # 查询info
     two_query_conf = Util.get_json(r'..\..\conf\\ClassServiceManagement_Conf\STC_Excel.conf')[1]
-    two_query_info = Util.get_excel_to_tuple(two_query_conf)
-    # print(two_query_info)
-
+    two_query_info = Util.get_excel(two_query_conf)
 
 
     # 考勤info
     TurnClass_conf = Util.get_json(r'..\..\conf\\ClassServiceManagement_Conf\STC_Excel.conf')[2]
-    TurnClass_info = Util.get_excel_to_tuple(TurnClass_conf)
-    # print(TurnClass_info)
-
-
-
+    TurnClass_info = Util.get_excel(TurnClass_conf)
 
 # ================================================================================================
 
@@ -38,22 +31,18 @@ class STC_Test(unittest.TestCase):
     def setUpClass(cls):
         pass
 
-
     # 收尾工作
     @classmethod
     def tearDownClass(cls):
-        cls.driver = Service.get_driver_zz()
+        cls.driver = Service.get_driver()
         cls.driver.close()
 
-
     def setUp(cls):
-        cls.driver = Service.get_driver_zz()
-        Service.open_page_zz(cls.driver)
+        cls.driver = Service.get_driver()
+        Service.open_page(cls.driver)
         info = ['WNCD051', 'Woniu123', 'Woniu123', '/html/body/div[4]/div[2]/div[8]/div[1]/a',
                 '//*[@id="list-31"]/div/ul/li[4]/a']
         Service.open_module_connect_zz(cls.driver, info)
-
-
 
     def tear(cls):
         pass
@@ -64,31 +53,25 @@ class STC_Test(unittest.TestCase):
     @parameterized.expand(query_info)
     def test_SSI_query(cls, stcarea, stcstate, stcname, expect):
         time.sleep(1)
-        old_query_num = Service.get_hint \
-            (cls.driver, '//*[@id="stuInfo"]/div[2]/div[2]/div[4]/div[1]/span[1]')
-        old_query_code = re.findall(r'共(.*?)条', old_query_num)[0]
-        old_num = old_query_code.strip()
+        old_text = cls.driver.find_element_by_xpath\
+            ('//*[@id="stuInfo"]/div[2]/div[2]/div[4]/div[1]/span[1]').text
 
         stcquerydata = {'stcarea': stcarea, 'stcstate': stcstate,
                         'stcname': stcname, 'expect': expect}
         STC_Action(cls.driver).do_query(stcquerydata)
 
         time.sleep(1)
-        new_query_num = Service.get_hint \
-            (cls.driver, '//*[@id="stuInfo"]/div[2]/div[2]/div[4]/div[1]/span[1]')
-        new_query_code = re.findall(r'共(.*?)条', new_query_num)[0]
-        new_num = new_query_code.strip()
+        new_text = cls.driver.find_element_by_xpath\
+            ('//*[@id="stuInfo"]/div[2]/div[2]/div[4]/div[1]/span[1]').text
 
         # 断言
-        if old_num != new_num:
+        if old_text != new_text:
             query_actual = 'query_pass'
         else:
             query_actual = 'query_fail'
 
         # 断言测试是否通过
         cls.assertEqual(query_actual, stcquerydata['expect'])
-
-
 # ================================================================================================
 
     # 查询
@@ -111,7 +94,6 @@ class STC_Test(unittest.TestCase):
 
         # 断言测试是否通过
         cls.assertEqual(query_actual, stcquerydata_two['expect'])
-
 # ================================================================================================
 
     # 转班
@@ -137,10 +119,4 @@ class STC_Test(unittest.TestCase):
 
         # 断言测试是否通过
         cls.assertEqual(actual, turnclassdata['expect'])
-
-
 # ================================================================================================
-
-
-if __name__ == '__main__':
-    unittest.main()

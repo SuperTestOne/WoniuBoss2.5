@@ -109,12 +109,12 @@ class SSI_Action:
         # 张三
         stu_state_two = self.driver.find_element_by_xpath \
             ('//*[@id="236"]/tbody/tr[4]/td[8]/select')
-        Select(stu_state_one).select_by_visible_text(Bactchdata['ssicontents_two'])
+        Select(stu_state_two).select_by_visible_text(Bactchdata['ssicontents_two'])
 
         # 张三08
         stu_state_three = self.driver.find_element_by_xpath \
             ('//*[@id="236"]/tbody/tr[5]/td[8]/select')
-        Select(stu_state_one).select_by_visible_text(Bactchdata['ssicontents_three'])
+        Select(stu_state_three).select_by_visible_text(Bactchdata['ssicontents_three'])
 
         self.clcik_Batch_ssi()
 

@@ -2,3 +2,7 @@
 #WoniuBoss_GUI_Test.case.ResourceAdministration_Test.TrainingResource_Test.TR_Test
 #WoniuBoss_GUI_Test.case.ResourceAdministration_Test.CommonResource_Test.CR_Test
 #WoniuBoss_GUI_Test.case.ResourceAdministration_Test.DeliverResource_Test.DR_Test
+#WoniuBoss_GUI_Test.case.ClassServiceManagement_Test.ClassManagement_Test.CM_Test
+#WoniuBoss_GUI_Test.case.ClassServiceManagement_Test.StudentSginIn_Test.SSI_Test
+#WoniuBoss_GUI_Test.case.ClassServiceManagement_Test.StudentLeave_Test.SL_Test
+#WoniuBoss_GUI_Test.case.ClassServiceManagement_Test.StudentTurnClass_Test.STC_Test
