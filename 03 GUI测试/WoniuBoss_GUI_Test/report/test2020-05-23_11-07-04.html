@@ -1,0 +1,1430 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Unit Test Report</title>
+    <meta name="generator" content="HTMLTestRunner 0.8.2"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    
+<style type="text/css" media="screen">
+body        { font-family: verdana, arial, helvetica, sans-serif; font-size: 80%; }
+table       { font-size: 100%; }
+pre         { }
+
+/* -- heading ---------------------------------------------------------------------- */
+h1 {
+	font-size: 16pt;
+	color: gray;
+}
+.heading {
+    margin-top: 0ex;
+    margin-bottom: 1ex;
+}
+
+.heading .attribute {
+    margin-top: 1ex;
+    margin-bottom: 0;
+}
+
+.heading .description {
+    margin-top: 4ex;
+    margin-bottom: 6ex;
+}
+
+/* -- css div popup ------------------------------------------------------------------------ */
+a.popup_link {
+}
+
+a.popup_link:hover {
+    color: red;
+}
+
+.popup_window {
+    display: none;
+    position: relative;
+    left: 0px;
+    top: 0px;
+    /*border: solid #627173 1px; */
+    padding: 10px;
+    background-color: #E6E6D6;
+    font-family: "Lucida Console", "Courier New", Courier, monospace;
+    text-align: left;
+    font-size: 8pt;
+    width: 500px;
+}
+
+}
+/* -- report ------------------------------------------------------------------------ */
+#show_detail_line {
+    margin-top: 3ex;
+    margin-bottom: 1ex;
+}
+#result_table {
+    width: 80%;
+    border-collapse: collapse;
+    border: 1px solid #777;
+}
+#header_row {
+    font-weight: bold;
+    color: white;
+    background-color: #777;
+}
+#result_table td {
+    border: 1px solid #777;
+    padding: 2px;
+}
+#total_row  { font-weight: bold; }
+.passClass  { background-color: #6c6; }
+.failClass  { background-color: #c60; }
+.errorClass { background-color: #c00; }
+.passCase   { color: #6c6; }
+.failCase   { color: #c60; font-weight: bold; }
+.errorCase  { color: #c00; font-weight: bold; }
+.hiddenRow  { display: none; }
+.testcase   { margin-left: 2em; }
+
+
+/* -- ending ---------------------------------------------------------------------- */
+#ending {
+}
+
+</style>
+
+</head>
+<body>
+<script language="javascript" type="text/javascript"><!--
+output_list = Array();
+
+/* level - 0:Summary; 1:Failed; 2:All */
+function showCase(level) {
+    trs = document.getElementsByTagName("tr");
+    for (var i = 0; i < trs.length; i++) {
+        tr = trs[i];
+        id = tr.id;
+        if (id.substr(0,2) == 'ft') {
+            if (level < 1) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+        if (id.substr(0,2) == 'pt') {
+            if (level > 1) {
+                tr.className = '';
+            }
+            else {
+                tr.className = 'hiddenRow';
+            }
+        }
+    }
+}
+
+
+function showClassDetail(cid, count) {
+    var id_list = Array(count);
+    var toHide = 1;
+    for (var i = 0; i < count; i++) {
+        tid0 = 't' + cid.substr(1) + '.' + (i+1);
+        tid = 'f' + tid0;
+        tr = document.getElementById(tid);
+        if (!tr) {
+            tid = 'p' + tid0;
+            tr = document.getElementById(tid);
+        }
+        id_list[i] = tid;
+        if (tr.className) {
+            toHide = 0;
+        }
+    }
+    for (var i = 0; i < count; i++) {
+        tid = id_list[i];
+        if (toHide) {
+            document.getElementById('div_'+tid).style.display = 'none'
+            document.getElementById(tid).className = 'hiddenRow';
+        }
+        else {
+            document.getElementById(tid).className = '';
+        }
+    }
+}
+
+
+function showTestDetail(div_id){
+    var details_div = document.getElementById(div_id)
+    var displayState = details_div.style.display
+    // alert(displayState)
+    if (displayState != 'block' ) {
+        displayState = 'block'
+        details_div.style.display = 'block'
+    }
+    else {
+        details_div.style.display = 'none'
+    }
+}
+
+
+function html_escape(s) {
+    s = s.replace(/&/g,'&amp;');
+    s = s.replace(/</g,'&lt;');
+    s = s.replace(/>/g,'&gt;');
+    return s;
+}
+
+/* obsoleted by detail in <div>
+function showOutput(id, name) {
+    var w = window.open("", //url
+                    name,
+                    "resizable,scrollbars,status,width=800,height=450");
+    d = w.document;
+    d.write("<pre>");
+    d.write(html_escape(output_list[id]));
+    d.write("\n");
+    d.write("<a href='javascript:window.close()'>close</a>\n");
+    d.write("</pre>\n");
+    d.close();
+}
+*/
+--></script>
+
+<div class='heading'>
+<h1>Unit Test Report</h1>
+<p class='attribute'><strong>Start Time:</strong> 2020-05-23 11:07:04</p>
+<p class='attribute'><strong>Duration:</strong> 0:52:28.971111</p>
+<p class='attribute'><strong>Status:</strong> Pass 52 Failure 10 Error 6</p>
+
+<p class='description'></p>
+</div>
+
+
+
+<p id='show_detail_line'>Show
+<a href='javascript:showCase(0)'>Summary</a>
+<a href='javascript:showCase(1)'>Failed</a>
+<a href='javascript:showCase(2)'>All</a>
+</p>
+<table id='result_table'>
+<colgroup>
+<col align='left' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+</colgroup>
+<tr id='header_row'>
+    <td>Test Group/Test case</td>
+    <td>Count</td>
+    <td>Pass</td>
+    <td>Fail</td>
+    <td>Error</td>
+    <td>View</td>
+</tr>
+
+<tr class='passClass'>
+    <td>WoniuBoss_GUI_Test.case.Login_Test.Login_Test.L_Test</td>
+    <td>5</td>
+    <td>5</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c1',5)">Detail</a></td>
+</tr>
+
+<tr id='pt1.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_login_0_WNCD000</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_login_1_</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_login_2_WNCD000</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_login_3_WNCD111</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_login_4_WNCD000</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='errorClass'>
+    <td>WoniuBoss_GUI_Test.case.ResourceAdministration_Test.TrainingResource_Test.TR_Test</td>
+    <td>8</td>
+    <td>3</td>
+    <td>4</td>
+    <td>1</td>
+    <td><a href="javascript:showClassDetail('c2',8)">Detail</a></td>
+</tr>
+
+<tr id='ft2.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_add_TR_0_15271849898</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft2.1')" >
+        fail</a>
+
+    <div id='div_ft2.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft2.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft2.1: Traceback (most recent call last):
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\PyCharm\WB\WoniuBoss_GUI_Test\case\ResourceAdministration_Test\TrainingResource_Test.py", line 50, in test_add_TR
+    self.assertEqual(actual, add_info[-1])
+AssertionError: 'add_fail' != 'add_pass'
+- add_fail
++ add_pass
+
+Traceback (most recent call last):
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\PyCharm\WB\WoniuBoss_GUI_Test\case\ResourceAdministration_Test\TrainingResource_Test.py", line 50, in test_add_TR
+    self.assertEqual(actual, add_info[-1])
+AssertionError: 'add_fail' != 'add_pass'
+- add_fail
++ add_pass
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft2.2' class='none'>
+    <td class='failCase'><div class='testcase'>test_add_TR_1_15271842378</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft2.2')" >
+        fail</a>
+
+    <div id='div_ft2.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft2.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft2.2: Traceback (most recent call last):
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\PyCharm\WB\WoniuBoss_GUI_Test\case\ResourceAdministration_Test\TrainingResource_Test.py", line 50, in test_add_TR
+    self.assertEqual(actual, add_info[-1])
+AssertionError: 'add_fail' != 'add_pass'
+- add_fail
++ add_pass
+
+Traceback (most recent call last):
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\PyCharm\WB\WoniuBoss_GUI_Test\case\ResourceAdministration_Test\TrainingResource_Test.py", line 50, in test_add_TR
+    self.assertEqual(actual, add_info[-1])
+AssertionError: 'add_fail' != 'add_pass'
+- add_fail
++ add_pass
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft2.3' class='none'>
+    <td class='failCase'><div class='testcase'>test_alter_TR_0__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft2.3')" >
+        fail</a>
+
+    <div id='div_ft2.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft2.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft2.3: Traceback (most recent call last):
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\PyCharm\WB\WoniuBoss_GUI_Test\case\ResourceAdministration_Test\TrainingResource_Test.py", line 118, in test_alter_TR
+    self.assertEqual(actual, alter_info[-1])
+AssertionError: 'alter_fail' != 'alter_pass'
+- alter_fail
++ alter_pass
+
+Traceback (most recent call last):
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\PyCharm\WB\WoniuBoss_GUI_Test\case\ResourceAdministration_Test\TrainingResource_Test.py", line 118, in test_alter_TR
+    self.assertEqual(actual, alter_info[-1])
+AssertionError: 'alter_fail' != 'alter_pass'
+- alter_fail
++ alter_pass
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt2.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_alter_TR_1_</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.4')" >
+        pass</a>
+
+    <div id='div_pt2.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.4: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt2.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_delete_TR</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='ft2.6' class='none'>
+    <td class='failCase'><div class='testcase'>test_query_TR_0__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft2.6')" >
+        fail</a>
+
+    <div id='div_ft2.6' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft2.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft2.6: Traceback (most recent call last):
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\PyCharm\WB\WoniuBoss_GUI_Test\case\ResourceAdministration_Test\TrainingResource_Test.py", line 85, in test_query_TR
+    self.assertEqual(actual, query_info[-1])
+AssertionError: 'query_fail' != 'query_pass'
+- query_fail
++ query_pass
+
+Traceback (most recent call last):
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\PyCharm\WB\WoniuBoss_GUI_Test\case\ResourceAdministration_Test\TrainingResource_Test.py", line 85, in test_query_TR
+    self.assertEqual(actual, query_info[-1])
+AssertionError: 'query_fail' != 'query_pass'
+- query_fail
++ query_pass
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft2.7' class='none'>
+    <td class='errorCase'><div class='testcase'>test_tail_TR_0__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft2.7')" >
+        error</a>
+
+    <div id='div_ft2.7' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft2.7').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft2.7: Traceback (most recent call last):
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\PyCharm\WB\WoniuBoss_GUI_Test\case\ResourceAdministration_Test\TrainingResource_Test.py", line 98, in test_tail_TR
+    status = self.driver.find_element_by_xpath('//*[@id="personal-table"]/tbody/tr[1]/td[5]').text
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: Unable to locate element: //*[@id="personal-table"]/tbody/tr[1]/td[5]
+
+Traceback (most recent call last):
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\PyCharm\WB\WoniuBoss_GUI_Test\case\ResourceAdministration_Test\TrainingResource_Test.py", line 98, in test_tail_TR
+    status = self.driver.find_element_by_xpath('//*[@id="personal-table"]/tbody/tr[1]/td[5]').text
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: Unable to locate element: //*[@id="personal-table"]/tbody/tr[1]/td[5]
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt2.8' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_tail_TR_1__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.8')" >
+        pass</a>
+
+    <div id='div_pt2.8' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.8').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.8: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>WoniuBoss_GUI_Test.case.ResourceAdministration_Test.CommonResource_Test.CR_Test</td>
+    <td>2</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c3',2)">Detail</a></td>
+</tr>
+
+<tr id='pt3.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_query_CR_0__</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt3.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_query_CR_1__</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='errorClass'>
+    <td>WoniuBoss_GUI_Test.case.ResourceAdministration_Test.DeliverResource_Test.DR_Test</td>
+    <td>4</td>
+    <td>2</td>
+    <td>1</td>
+    <td>1</td>
+    <td><a href="javascript:showClassDetail('c4',4)">Detail</a></td>
+</tr>
+
+<tr id='ft4.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_deliver_DR_0__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft4.1')" >
+        fail</a>
+
+    <div id='div_ft4.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft4.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft4.1: Traceback (most recent call last):
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\PyCharm\WB\WoniuBoss_GUI_Test\case\ResourceAdministration_Test\DeliverResource_Test.py", line 56, in test_deliver_DR
+    self.assertEqual(actual, deliver_info[-1])
+AssertionError: 'deliver_fail' != 'deliver_pass'
+- deliver_fail
+?         ^ ^^
++ deliver_pass
+?         ^ ^^
+
+Traceback (most recent call last):
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\PyCharm\WB\WoniuBoss_GUI_Test\case\ResourceAdministration_Test\DeliverResource_Test.py", line 56, in test_deliver_DR
+    self.assertEqual(actual, deliver_info[-1])
+AssertionError: 'deliver_fail' != 'deliver_pass'
+- deliver_fail
+?         ^ ^^
++ deliver_pass
+?         ^ ^^
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft4.2' class='none'>
+    <td class='errorCase'><div class='testcase'>test_deliver_DR_1__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft4.2')" >
+        error</a>
+
+    <div id='div_ft4.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft4.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft4.2: Traceback (most recent call last):
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\PyCharm\WB\WoniuBoss_GUI_Test\case\ResourceAdministration_Test\DeliverResource_Test.py", line 47, in test_deliver_DR
+    DR_Action(self.driver).do_deliver(deliver_info[:-1])
+  File "D:\Python\PyCharm\WB\WoniuBoss_GUI_Test\lib\ResourceAdministration\DeliverResource_Action.py", line 28, in do_deliver
+    Service.select_motion(self.driver, 'xpath', self.ele[9]["DR_counselor_xpath"], deliver_info[2])
+  File "D:\Python\PyCharm\WB\WoniuBoss_GUI_Test\tools\service.py", line 111, in select_motion
+    Select(sm).select_by_visible_text(value)
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\selenium\webdriver\support\select.py", line 140, in select_by_visible_text
+    raise NoSuchElementException("Could not locate element with visible text: %s" % text)
+selenium.common.exceptions.NoSuchElementException: Message: Could not locate element with visible text: 苹果
+
+Traceback (most recent call last):
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\PyCharm\WB\WoniuBoss_GUI_Test\case\ResourceAdministration_Test\DeliverResource_Test.py", line 47, in test_deliver_DR
+    DR_Action(self.driver).do_deliver(deliver_info[:-1])
+  File "D:\Python\PyCharm\WB\WoniuBoss_GUI_Test\lib\ResourceAdministration\DeliverResource_Action.py", line 28, in do_deliver
+    Service.select_motion(self.driver, 'xpath', self.ele[9]["DR_counselor_xpath"], deliver_info[2])
+  File "D:\Python\PyCharm\WB\WoniuBoss_GUI_Test\tools\service.py", line 111, in select_motion
+    Select(sm).select_by_visible_text(value)
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\selenium\webdriver\support\select.py", line 140, in select_by_visible_text
+    raise NoSuchElementException("Could not locate element with visible text: %s" % text)
+selenium.common.exceptions.NoSuchElementException: Message: Could not locate element with visible text: 苹果
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt4.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_query_DR_0__</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt4.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_query_DR_1__</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='failClass'>
+    <td>WoniuBoss_GUI_Test.case.ClassServiceManagement_Test.ClassManagement_Test.CM_Test</td>
+    <td>4</td>
+    <td>3</td>
+    <td>1</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c5',4)">Detail</a></td>
+</tr>
+
+<tr id='pt5.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_CSM_add_0_WNCD003</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='ft5.2' class='none'>
+    <td class='failCase'><div class='testcase'>test_CSM_add_1_123</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft5.2')" >
+        fail</a>
+
+    <div id='div_ft5.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft5.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft5.2: Traceback (most recent call last):
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\PyCharm\WB\WoniuBoss_GUI_Test\case\ClassServiceManagement_Test\ClassManagement_Test.py", line 45, in test_CSM_add
+    cls.assertEqual(add_actual, addclass_data['expect'])
+AssertionError: 'add_pass' != 'add_fail'
+- add_pass
++ add_fail
+
+Traceback (most recent call last):
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\PyCharm\WB\WoniuBoss_GUI_Test\case\ClassServiceManagement_Test\ClassManagement_Test.py", line 45, in test_CSM_add
+    cls.assertEqual(add_actual, addclass_data['expect'])
+AssertionError: 'add_pass' != 'add_fail'
+- add_pass
++ add_fail
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt5.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_CSM_query_0__</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt5.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_CSM_query_1__</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='passClass'>
+    <td>WoniuBoss_GUI_Test.case.ClassServiceManagement_Test.StudentSginIn_Test.SSI_Test</td>
+    <td>6</td>
+    <td>6</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c6',6)">Detail</a></td>
+</tr>
+
+<tr id='pt6.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_SSI_0__</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt6.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_SSI_1__</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt6.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_SSI_Bactch_0__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt6.3')" >
+        pass</a>
+
+    <div id='div_pt6.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt6.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt6.3: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt6.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_SSI_Return_0__</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt6.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_SSI_query_0__06</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt6.6' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_SSI_query_tow_0__</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='errorClass'>
+    <td>WoniuBoss_GUI_Test.case.ClassServiceManagement_Test.StudentLeave_Test.SL_Test</td>
+    <td>9</td>
+    <td>7</td>
+    <td>0</td>
+    <td>2</td>
+    <td><a href="javascript:showClassDetail('c7',9)">Detail</a></td>
+</tr>
+
+<tr id='pt7.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_CSM_add_0__</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt7.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_CSM_add_1__</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='ft7.3' class='none'>
+    <td class='errorCase'><div class='testcase'>test_CSM_edit_0__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft7.3')" >
+        error</a>
+
+    <div id='div_ft7.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft7.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft7.3: Traceback (most recent call last):
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\PyCharm\WB\WoniuBoss_GUI_Test\case\ClassServiceManagement_Test\StudentLeave_Test.py", line 108, in test_CSM_edit
+    STU_Action(cls.driver).do_edit_leave(editleavedata)
+  File "D:\Python\PyCharm\WB\WoniuBoss_GUI_Test\lib\ClassServiceManagement\StudentLeave_Action.py", line 225, in do_edit_leave
+    self.levae_edit()
+  File "D:\Python\PyCharm\WB\WoniuBoss_GUI_Test\lib\ClassServiceManagement\StudentLeave_Action.py", line 185, in levae_edit
+    ('//*[@id="leave-table"]/tbody/tr[3]/td[12]/button[3]')
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: Unable to locate element: //*[@id="leave-table"]/tbody/tr[3]/td[12]/button[3]
+
+Traceback (most recent call last):
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\PyCharm\WB\WoniuBoss_GUI_Test\case\ClassServiceManagement_Test\StudentLeave_Test.py", line 108, in test_CSM_edit
+    STU_Action(cls.driver).do_edit_leave(editleavedata)
+  File "D:\Python\PyCharm\WB\WoniuBoss_GUI_Test\lib\ClassServiceManagement\StudentLeave_Action.py", line 225, in do_edit_leave
+    self.levae_edit()
+  File "D:\Python\PyCharm\WB\WoniuBoss_GUI_Test\lib\ClassServiceManagement\StudentLeave_Action.py", line 185, in levae_edit
+    ('//*[@id="leave-table"]/tbody/tr[3]/td[12]/button[3]')
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: Unable to locate element: //*[@id="leave-table"]/tbody/tr[3]/td[12]/button[3]
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft7.4' class='none'>
+    <td class='errorCase'><div class='testcase'>test_CSM_edit_1_123</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft7.4')" >
+        error</a>
+
+    <div id='div_ft7.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft7.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft7.4: Traceback (most recent call last):
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\PyCharm\WB\WoniuBoss_GUI_Test\case\ClassServiceManagement_Test\StudentLeave_Test.py", line 108, in test_CSM_edit
+    STU_Action(cls.driver).do_edit_leave(editleavedata)
+  File "D:\Python\PyCharm\WB\WoniuBoss_GUI_Test\lib\ClassServiceManagement\StudentLeave_Action.py", line 225, in do_edit_leave
+    self.levae_edit()
+  File "D:\Python\PyCharm\WB\WoniuBoss_GUI_Test\lib\ClassServiceManagement\StudentLeave_Action.py", line 185, in levae_edit
+    ('//*[@id="leave-table"]/tbody/tr[3]/td[12]/button[3]')
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: Unable to locate element: //*[@id="leave-table"]/tbody/tr[3]/td[12]/button[3]
+
+Traceback (most recent call last):
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\PyCharm\WB\WoniuBoss_GUI_Test\case\ClassServiceManagement_Test\StudentLeave_Test.py", line 108, in test_CSM_edit
+    STU_Action(cls.driver).do_edit_leave(editleavedata)
+  File "D:\Python\PyCharm\WB\WoniuBoss_GUI_Test\lib\ClassServiceManagement\StudentLeave_Action.py", line 225, in do_edit_leave
+    self.levae_edit()
+  File "D:\Python\PyCharm\WB\WoniuBoss_GUI_Test\lib\ClassServiceManagement\StudentLeave_Action.py", line 185, in levae_edit
+    ('//*[@id="leave-table"]/tbody/tr[3]/td[12]/button[3]')
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: Unable to locate element: //*[@id="leave-table"]/tbody/tr[3]/td[12]/button[3]
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt7.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_CSM_query_0__</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt7.6' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_CSM_query_1__</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt7.7' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_CSM_query_tow_0__</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt7.8' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_CSM_query_tow_1__</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt7.9' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_click_delete_leave</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='passClass'>
+    <td>WoniuBoss_GUI_Test.case.ClassServiceManagement_Test.StudentTurnClass_Test.STC_Test</td>
+    <td>3</td>
+    <td>3</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c8',3)">Detail</a></td>
+</tr>
+
+<tr id='pt8.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_SSI_query_0__</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt8.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_SSI_query_tow_0__</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt8.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_STC_turnclass_0__</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='errorClass'>
+    <td>WoniuBoss_GUI_Test.case.Market_Test.Market_Test.Market_Test</td>
+    <td>6</td>
+    <td>4</td>
+    <td>0</td>
+    <td>2</td>
+    <td><a href="javascript:showClassDetail('c9',6)">Detail</a></td>
+</tr>
+
+<tr id='pt9.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_add_resource_0_13589012312</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt9.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_add_resource_1_</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt9.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_search_resource_0_13589012312</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt9.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_search_resource_1_1358902</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='ft9.5' class='none'>
+    <td class='errorCase'><div class='testcase'>test_upload_resource_0_D_A_1_xls</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft9.5')" >
+        error</a>
+
+    <div id='div_ft9.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft9.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft9.5: Traceback (most recent call last):
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\PyCharm\WB\WoniuBoss_GUI_Test\case\Market_Test\Market_Test.py", line 53, in test_upload_resource
+    msg = Market(self.driver).upload_resource(upload_info)
+  File "D:\Python\PyCharm\WB\WoniuBoss_GUI_Test\lib\Market\Market_Action.py", line 156, in upload_resource
+    self.driver.find_element_by_xpath('//*[@id="files"]').send_keys(info['path'])#传入文件路径
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\selenium\webdriver\remote\webelement.py", line 479, in send_keys
+    'value': keys_to_typing(value)})
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\selenium\webdriver\remote\webelement.py", line 633, in _execute
+    return self._parent.execute(command, params)
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.InvalidArgumentException: Message: File not found: D:\\专属A简历(1).xls
+
+Traceback (most recent call last):
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\PyCharm\WB\WoniuBoss_GUI_Test\case\Market_Test\Market_Test.py", line 53, in test_upload_resource
+    msg = Market(self.driver).upload_resource(upload_info)
+  File "D:\Python\PyCharm\WB\WoniuBoss_GUI_Test\lib\Market\Market_Action.py", line 156, in upload_resource
+    self.driver.find_element_by_xpath('//*[@id="files"]').send_keys(info['path'])#传入文件路径
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\selenium\webdriver\remote\webelement.py", line 479, in send_keys
+    'value': keys_to_typing(value)})
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\selenium\webdriver\remote\webelement.py", line 633, in _execute
+    return self._parent.execute(command, params)
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.InvalidArgumentException: Message: File not found: D:\\专属A简历(1).xls
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft9.6' class='none'>
+    <td class='errorCase'><div class='testcase'>test_upload_resource_1_D_1_log</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft9.6')" >
+        error</a>
+
+    <div id='div_ft9.6' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft9.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft9.6: Traceback (most recent call last):
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\PyCharm\WB\WoniuBoss_GUI_Test\case\Market_Test\Market_Test.py", line 53, in test_upload_resource
+    msg = Market(self.driver).upload_resource(upload_info)
+  File "D:\Python\PyCharm\WB\WoniuBoss_GUI_Test\lib\Market\Market_Action.py", line 156, in upload_resource
+    self.driver.find_element_by_xpath('//*[@id="files"]').send_keys(info['path'])#传入文件路径
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\selenium\webdriver\remote\webelement.py", line 479, in send_keys
+    'value': keys_to_typing(value)})
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\selenium\webdriver\remote\webelement.py", line 633, in _execute
+    return self._parent.execute(command, params)
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.InvalidArgumentException: Message: File not found: D:\\1.log
+
+Traceback (most recent call last):
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\PyCharm\WB\WoniuBoss_GUI_Test\case\Market_Test\Market_Test.py", line 53, in test_upload_resource
+    msg = Market(self.driver).upload_resource(upload_info)
+  File "D:\Python\PyCharm\WB\WoniuBoss_GUI_Test\lib\Market\Market_Action.py", line 156, in upload_resource
+    self.driver.find_element_by_xpath('//*[@id="files"]').send_keys(info['path'])#传入文件路径
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\selenium\webdriver\remote\webelement.py", line 479, in send_keys
+    'value': keys_to_typing(value)})
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\selenium\webdriver\remote\webelement.py", line 633, in _execute
+    return self._parent.execute(command, params)
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.InvalidArgumentException: Message: File not found: D:\\1.log
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='failClass'>
+    <td>WoniuBoss_GUI_Test.case.StuManage_Test.StudentManage_Test.Stu_Manage_Test</td>
+    <td>12</td>
+    <td>8</td>
+    <td>4</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c10',12)">Detail</a></td>
+</tr>
+
+<tr id='pt10.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_add_week_grade_0_WNCDC99</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='ft10.2' class='none'>
+    <td class='failCase'><div class='testcase'>test_add_week_grade_0__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft10.2')" >
+        fail</a>
+
+    <div id='div_ft10.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft10.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft10.2: Traceback (most recent call last):
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\PyCharm\WB\WoniuBoss_GUI_Test\case\StuManage_Test\StudentManage_Test.py", line 76, in test_add_week_grade
+    self.assertEqual(actual, expect)
+AssertionError: 'add-fail' != 'add-success'
+- add-fail
++ add-success
+
+Traceback (most recent call last):
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\PyCharm\WB\WoniuBoss_GUI_Test\case\StuManage_Test\StudentManage_Test.py", line 76, in test_add_week_grade
+    self.assertEqual(actual, expect)
+AssertionError: 'add-fail' != 'add-success'
+- add-fail
++ add-success
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt10.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_add_week_grade_1_WNCDC99</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt10.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_add_week_grade_1__</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt10.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_alter_stu_info_0_1362345892</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='ft10.6' class='none'>
+    <td class='failCase'><div class='testcase'>test_alter_stu_info_1_1324</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft10.6')" >
+        fail</a>
+
+    <div id='div_ft10.6' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft10.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft10.6: Traceback (most recent call last):
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\PyCharm\WB\WoniuBoss_GUI_Test\case\StuManage_Test\StudentManage_Test.py", line 48, in test_alter_stu_info
+    self.assertEqual(actual, expect)
+AssertionError: 'alter-success' != 'alter-fail'
+- alter-success
++ alter-fail
+
+Traceback (most recent call last):
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\PyCharm\WB\WoniuBoss_GUI_Test\case\StuManage_Test\StudentManage_Test.py", line 48, in test_alter_stu_info
+    self.assertEqual(actual, expect)
+AssertionError: 'alter-success' != 'alter-fail'
+- alter-success
++ alter-fail
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft10.7' class='none'>
+    <td class='failCase'><div class='testcase'>test_search_evaluate_0__02</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft10.7')" >
+        fail</a>
+
+    <div id='div_ft10.7' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft10.7').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft10.7: Traceback (most recent call last):
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\PyCharm\WB\WoniuBoss_GUI_Test\case\StuManage_Test\StudentManage_Test.py", line 63, in test_search_evaluate
+    self.assertEqual(actual, expect)
+AssertionError: 'search-fail' != 'search-success'
+- search-fail
++ search-success
+
+Traceback (most recent call last):
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\PyCharm\WB\WoniuBoss_GUI_Test\case\StuManage_Test\StudentManage_Test.py", line 63, in test_search_evaluate
+    self.assertEqual(actual, expect)
+AssertionError: 'search-fail' != 'search-success'
+- search-fail
++ search-success
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt10.8' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_search_evaluate_1_ssdf</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='ft10.9' class='none'>
+    <td class='failCase'><div class='testcase'>test_search_stuInfo_0__02</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft10.9')" >
+        fail</a>
+
+    <div id='div_ft10.9' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft10.9').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft10.9: Traceback (most recent call last):
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\PyCharm\WB\WoniuBoss_GUI_Test\case\StuManage_Test\StudentManage_Test.py", line 33, in test_search_stuInfo
+    self.assertEqual(actual, expect)
+AssertionError: 'search-fail' != 'search-success'
+- search-fail
++ search-success
+
+Traceback (most recent call last):
+  File "D:\Python\PyCharm\python代码\venv\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\PyCharm\WB\WoniuBoss_GUI_Test\case\StuManage_Test\StudentManage_Test.py", line 33, in test_search_stuInfo
+    self.assertEqual(actual, expect)
+AssertionError: 'search-fail' != 'search-success'
+- search-fail
++ search-success
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt10.10' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_search_stuInfo_1_xxxxxx</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt10.11' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_search_week_grade_0__</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt10.12' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_search_week_grade_1__</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='passClass'>
+    <td>WoniuBoss_GUI_Test.case.Technica_Test.course_test.C_Test</td>
+    <td>4</td>
+    <td>4</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c11',4)">Detail</a></td>
+</tr>
+
+<tr id='pt11.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_course_0__</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt11.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_course_1__</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt11.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_query_0__</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt11.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_query_1__</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='passClass'>
+    <td>WoniuBoss_GUI_Test.case.Technica_Test.technica_test.T_Test</td>
+    <td>5</td>
+    <td>5</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c12',5)">Detail</a></td>
+</tr>
+
+<tr id='pt12.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_interview_0__</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt12.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_interview_1__</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt12.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_search_0__</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt12.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_search_1__</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt12.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_search_2__</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='total_row'>
+    <td>Total</td>
+    <td>68</td>
+    <td>52</td>
+    <td>10</td>
+    <td>6</td>
+    <td>&nbsp;</td>
+</tr>
+</table>
+
+<div id='ending'>&nbsp;</div>
+
+</body>
+</html>

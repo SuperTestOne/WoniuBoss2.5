@@ -41,39 +41,28 @@ class CR_Test(unittest.TestCase):
         self.assertEqual(actual, query_info[-1])
 
     #公共资源认领测试
-    @parameterized.expand(claim_info)
-    def test_claim_CR(self,*claim_info):
-        num_msg = '//*[@id="content"]/div[3]/div/div[1]/div[2]/div[4]/div[1]/span[1]'
-        #在培训资源模块中选择资源库
-        Service.select_motion(self.driver, 'xpath', self.ele[7]["CR_resource_xpath"],"临时池")
-        #获取咨询师名字
-        name_msg = Service.get_hint(self.driver, '/html/body/div[1]').split('.')[-1].strip()
-        #选择咨询师名字
-        Service.select_motion(self.driver, 'xpath', self.ele[7]["CR_counselor_xpath"], name_msg)
-        #查询
-        Service.click_motion(self.driver, 'xpath', self.ele[7]["CR_query_xpath"])
-        #获取学员信息条数
-        old_msg = Service.get_hint(self.driver,num_msg)
-        #完成认领动作
-        Service.click_motion(self.driver, 'xpath', self.ele[7]["CR_commonality_xpath"])
-        CR_Action(self.driver).do_claim()
-        self.driver.refresh()
-        #回到培训资源模块查询数据条数
-        Service.click_motion(self.driver, 'xpath', self.ele[7]["CR_administration_xpath"])
-        Service.click_motion(self.driver, 'xpath', self.ele[7]["CR_train_xpath"])
-        Service.select_motion(self.driver, 'xpath', self.ele[7]["CR_resource_xpath"], "临时池")
-        Service.select_motion(self.driver, 'xpath', self.ele[7]["CR_counselor_xpath"], name_msg)
-        Service.click_motion(self.driver, 'xpath', self.ele[7]["CR_query_xpath"])
-        new_msg = Service.get_hint(self.driver, num_msg)
-
-        if old_msg != new_msg:
-            actual = "claim_pass"
-        else:
-            actual = "claim_fail"
-
-        print(actual)
-        print(claim_info[-1])
-        self.assertEqual(actual, claim_info[-1])
+    # @parameterized.expand(claim_info)
+    # def test_claim_CR(self,*claim_info):
+    #     num_msg = '//*[@id="content"]/div[3]/div/div[1]/div[2]/div[4]/div[1]/span[1]'
+    #     #在培训资源模块中选择资源库
+    #     Service.select_motion(self.driver, 'xpath', self.ele[7]["CR_resource_xpath"],"临时池")
+    #     #获取学员信息条数
+    #     old_msg = Service.get_hint(self.driver,num_msg)
+    #     #完成认领动作
+    #     Service.click_motion(self.driver, 'xpath', self.ele[7]["CR_commonality_xpath"])
+    #     CR_Action(self.driver).do_claim()
+    #     self.driver.refresh()
+    #     #回到培训资源模块查询数据条数
+    #     Service.click_motion(self.driver, 'xpath', self.ele[7]["CR_administration_xpath"])
+    #     Service.click_motion(self.driver, 'xpath', self.ele[7]["CR_train_xpath"])
+    #     Service.select_motion(self.driver, 'xpath', self.ele[7]["CR_resource_xpath"], "临时池")
+    #     new_msg = Service.get_hint(self.driver, num_msg)
+    #
+    #     if old_msg != new_msg:
+    #         actual = "claim_pass"
+    #     else:
+    #         actual = "claim_fail"
+    #     self.assertEqual(actual, claim_info[-1])
 
     def tearDown(self):
         self.driver.close()
@@ -81,3 +70,6 @@ class CR_Test(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         pass
+
+if __name__ == '__main__':
+    test_claim_CR()

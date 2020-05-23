@@ -24,7 +24,7 @@ class DR_Test(unittest.TestCase):
         Service.open_module_connect(self.driver, login_ele)
         self.ele = Util.get_json("..\\..\\conf\\ResourceAdministration_Conf\\RA_Element.conf")
 
-    #转交资源认领测试
+    #转交资源查询测试
     @parameterized.expand(query_info)
     def test_query_DR(self,*query_info):
         msg_xpath = '//*[@id="content"]/div[3]/div/div[1]/div[2]/div[4]/div[1]/span[1]'
