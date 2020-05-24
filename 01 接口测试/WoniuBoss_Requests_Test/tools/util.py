@@ -55,3 +55,30 @@ class Util:
         import time
         ctime = time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime())
         return ctime
+        
+# =========================================================================================
+    # 詹正
+    # 获取Excel里需要的数据
+    @classmethod
+    def get_excel_zz(cls, conf):
+        import xlrd, ast
+        test_info = []
+        workbook = xlrd.open_workbook(conf['TESTINFO_PATH'])
+        contents = workbook.sheet_by_name(conf['SHEETNAME'])
+        for i in range(conf['START_ROW'], conf['END_ROW']):
+            test_url = contents.cell(i, conf['URL_COL']).value
+            method = contents.cell(i, conf['METHOD_COL']).value
+            test_data = contents.cell(i, conf['TESTDATA_COL']).value
+            expect = contents.cell(i, conf['EXPECT_COL']).value
+            data = ast.literal_eval(test_data)
+            list = []
+            list.append(test_url)
+            list.append(method)
+            list.append(data)
+            list.append(expect)
+            info = tuple(list)
+            test_info.append(info)
+        return test_info
+
+
+# =========================================================================================

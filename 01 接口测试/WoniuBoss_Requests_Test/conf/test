@@ -4,3 +4,7 @@ WoniuBoss_Requests_Test.case.F_DeliverResource_Test.DR_Test
 WoniuBoss_Requests_Test.case.F_TrainingResource_Test.TR_Test
 WoniuBoss_Requests_Test.case.E_Market_Test.M_Test
 WoniuBoss_Requests_Test.case.G_StudentManage_Test.SM_Test
+WoniuBoss_Requests_Test.case.I_ClassManagement_Test.CM_Test
+WoniuBoss_Requests_Test.case.I_StudentLevae_Test.SL_Test
+WoniuBoss_Requests_Test.case.I_StudentSginIn_Test.SSI_Test
+WoniuBoss_Requests_Test.case.I_StudentTurnClass_Test.STC_Test
