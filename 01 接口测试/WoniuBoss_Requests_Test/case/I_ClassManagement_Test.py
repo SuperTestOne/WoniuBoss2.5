@@ -30,9 +30,9 @@ class CM_Test(unittest.TestCase):
         query_resp = self.CM.do_query(query_data['URL'], query_data['METHOD'],
                                               query_data['QUERYDATA'])
 
-        # 获取json格式字符串
+
         contents = query_resp.json()
-        # print(contents)
+
 
         contents_result = int(contents['totalRow'])
         if isinstance(contents_result, int):
@@ -54,7 +54,6 @@ class CM_Test(unittest.TestCase):
                                               add_data['QUERYDATA'])
 
         contents = add_resp.text
-        # print(contents)
 
         if contents == "success":
             add_actual = 'add_pass'
@@ -74,7 +73,6 @@ class CM_Test(unittest.TestCase):
                                               decode_data['QUERYDATA'])
 
         contents = decode_resp.text
-        # print(contents)
 
         if contents == "yes":
             decode_actual = 'decode_pass'
@@ -85,7 +83,3 @@ class CM_Test(unittest.TestCase):
 
         self.assertEqual(decode_actual, decode_data['EXPECT'])
 
-
-
-if __name__ == '__main__':
-    unittest.main(verbosity=2)

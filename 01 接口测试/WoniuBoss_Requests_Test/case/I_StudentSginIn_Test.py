@@ -94,7 +94,6 @@ class SSI_Test(unittest.TestCase):
                                               decode_data['QUERYDATA'])
 
         contents = decode_resp.text
-        # print(contents)
 
         if contents == "yes":
             decode_actual = 'decode_pass'
@@ -104,7 +103,3 @@ class SSI_Test(unittest.TestCase):
             decode_actual = 'other_error'
 
         self.assertEqual(decode_actual, decode_data['EXPECT'])
-
-
-if __name__ == '__main__':
-    unittest.main(verbosity=2)

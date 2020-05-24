@@ -8,3 +8,7 @@ WoniuBoss_Requests_Test.case.I_ClassManagement_Test.CM_Test
 WoniuBoss_Requests_Test.case.I_StudentLevae_Test.SL_Test
 WoniuBoss_Requests_Test.case.I_StudentSginIn_Test.SSI_Test
 WoniuBoss_Requests_Test.case.I_StudentTurnClass_Test.STC_Test
+WoniuBoss_Requests_Test.case.H_ApplicationOvertime_Test.AOA_Test
+WoniuBoss_Requests_Test.case.H_CourseArrangement_Test.CA_Test
+WoniuBoss_Requests_Test.case.H_TeacherDuty_Test.TD_Test
+WoniuBoss_Requests_Test.case.H_Technical_Interview_Test.TI_Test

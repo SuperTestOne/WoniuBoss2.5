@@ -128,6 +128,3 @@ class STC_Test(unittest.TestCase):
 
 
 
-
-if __name__ == '__main__':
-    unittest.main()

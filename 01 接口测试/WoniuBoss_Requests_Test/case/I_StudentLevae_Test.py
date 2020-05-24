@@ -176,7 +176,3 @@ class SL_Test(unittest.TestCase):
         self.assertEqual(turn_page_actual, turn_page_data['EXPECT'])
 
 
-
-
-if __name__ == '__main__':
-    unittest.main()
