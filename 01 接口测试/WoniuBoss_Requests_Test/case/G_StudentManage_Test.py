@@ -31,12 +31,12 @@ class SM_Test(unittest.TestCase):
         self.assertEqual(actual, expect)
 
     # 获取修改学员信息数据
-    alter_stuData = Util.get_json('..\\conf\\G_SM_Excel.conf')[1]
-    alter_stuInfo = Util.get_excel(alter_stuData)
+    #alter_stuData = Util.get_json('..\\conf\\G_SM_Excel.conf')[1]
+    #alter_stuInfo = Util.get_excel(alter_stuData)
     #修改学员信息测试
-    @parameterized.expand(alter_stuInfo)
-    def test_alter_studentInfo(self):
-        pass
+    #@parameterized.expand(alter_stuInfo)
+    #def test_alter_studentInfo(self):
+     #   pass
 
     #获取查询日常考评evaluation数据
     evaluation_stuData = Util.get_json('..\\conf\\G_SM_Excel.conf')[2]

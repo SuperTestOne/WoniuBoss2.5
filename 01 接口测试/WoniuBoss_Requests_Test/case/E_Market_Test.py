@@ -6,7 +6,7 @@ import unittest
 from parameterized import parameterized
 from WoniuBoss_Requests_Test.tools.util import Util
 
-class L_Test(unittest.TestCase):
+class M_Test(unittest.TestCase):
 
     def setUp(self):
         from WoniuBoss_Requests_Test.tools.service import Service

@@ -2,3 +2,5 @@ WoniuBoss_Requests_Test.case.A_Login_Test.L_Test
 WoniuBoss_Requests_Test.case.F_CommonResource_Test.CR_Test
 WoniuBoss_Requests_Test.case.F_DeliverResource_Test.DR_Test
 WoniuBoss_Requests_Test.case.F_TrainingResource_Test.TR_Test
+WoniuBoss_Requests_Test.case.E_Market_Test.M_Test
+WoniuBoss_Requests_Test.case.G_StudentManage_Test.SM_Test
