@@ -12,3 +12,8 @@ class M_Action():
         resp = self.session.post(url=url, data=data)
         return resp
 
+    #文件上传
+    def do_upload(self,url,data,path):
+        resp = self.session.post(url=url, data=data,files=path)
+        return resp
+

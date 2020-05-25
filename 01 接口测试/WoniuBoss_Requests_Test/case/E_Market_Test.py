@@ -51,11 +51,13 @@ class M_Test(unittest.TestCase):
     @parameterized.expand(upload_info)
     def test_upload_resource(self, upload_url, upload_data, expect):
         from WoniuBoss_Requests_Test.lib.E_Market_Action import M_Action
-        res = M_Action(self.session).do_post(upload_url, upload_data)
-        if res.text == "":
-            actual = 'fail'
-        else:
+        data = {'dept':upload_data['dept'],'region':upload_data['region']}
+        path = {"token":open(upload_data['token'],'rb')}
+        res = M_Action(self.session).do_upload(upload_url, data,path)
+        if '总共上传'in res.text:
             actual = 'pass'
+        else:
+            actual = 'fail'
         self.assertEqual(actual, expect)
 
     #获取修改资源数据
